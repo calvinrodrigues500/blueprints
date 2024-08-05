@@ -17,6 +17,13 @@
 		{
 			"step": "runPHP",
 			"code": "<?php\n\nrequire\n'/wordpress/wp-load.php';\n function add_custom_flat_rate_shipping_method() {\n $zone = new WC_Shipping_Zone( 0 );\n $shipping_methods = $zone->get_shipping_methods();\n $method_exists = false;\n foreach ( $shipping_methods as $method ) {\n if ('flat_rate' == $method->id) {\n $method_exists = true;\n break;\n }\n }\n if ($method_exists) {\n return;\n }\n $instance_id = $zone->add_shipping_method( 'flat_rate' );\n if (!$instance_id) {\n return;\n }\n $settings = array(\n 'title' => 'Custom Flat Rate',\n 'cost' => 10,\n 'tax_status' => 'none',\n );\n update_option( 'woocommerce_flat_rate_' . $instance_id . '_settings', $settings );\n }\n add_action( 'init', 'add_custom_flat_rate_shipping_method' );\n ?>"
+		},
+		{
+			"step": "importWxr",
+			"file": {
+				"resource": "url",
+				"url": ""
+			}
 		}
 	]
 }
