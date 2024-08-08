@@ -44,3 +44,19 @@ function add_flat_rate_shipping_method() {
 }
 
 add_action('init', 'add_flat_rate_shipping_method');
+
+function enable_bacs_payment_gateway() {
+
+	if (!class_exists('WC_Payment_Gateway')) {
+		return;
+	}
+
+	$bacs_settings = get_option('woocommerce_bacs_settings', array());
+
+	if (!isset($bacs_settings['enabled']) || 'yes' !== $bacs_settings['enabled']) {
+		$bacs_settings['enabled'] = 'yes';
+		update_option('woocommerce_bacs_settings', $bacs_settings);
+	}
+}
+
+add_action('woocommerce_init', 'enable_bacs_payment_gateway');
