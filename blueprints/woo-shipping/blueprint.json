@@ -28,7 +28,7 @@
 			"step": "importWxr",
 			"file": {
 				"resource": "url",
-				"url": "https://github.com/woocommerce/woocommerce/blob/trunk/plugins/woocommerce/sample-data/sample_products.xml"
+				"url": "https://raw.githubusercontent.com/calvinrodrigues500/blueprints/woo-shipping/blueprints/woo-shipping/sample_products.xml"
 			}
 		},
 		{
